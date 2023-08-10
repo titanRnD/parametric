@@ -6,7 +6,7 @@ width = 4
 center_hole_diameter = 2.8  # Large hole diameter for bolts
 corner_radius = 0.25
 bolt_hole_diameter = 0.32  # Diameter of the smaller corner holes for bolts
-export_path = f'export_flange_{length}-x-{width}-o-{center_hole_diameter}.dxf'
+export_path = f'square_flange_{length}-x-{width}-o-{center_hole_diameter}.dxf'
 
 def generate_line_drawing(length, width, center_hole_diameter, corner_radius, bolt_hole_diameter, export_path):
     # Create a new DXF document
@@ -30,6 +30,7 @@ def generate_line_drawing(length, width, center_hole_diameter, corner_radius, bo
     modelspace.add_arc(top_right, corner_radius, 0, 90)
     modelspace.add_arc(bottom_right, corner_radius, 270, 360)
     modelspace.add_arc(bottom_left, corner_radius, 180, 270)
+    
     modelspace.add_line((top_left[0], top_left[1] + corner_radius), (top_right[0], top_right[1] + corner_radius))
     modelspace.add_line((top_right[0] + corner_radius, top_right[1]), (bottom_right[0] + corner_radius, bottom_right[1]))
     modelspace.add_line((bottom_right[0], bottom_right[1] - corner_radius), (bottom_left[0], bottom_left[1] - corner_radius))
@@ -57,6 +58,4 @@ def generate_line_drawing(length, width, center_hole_diameter, corner_radius, bo
     # Inform the user about the successful export
     print(f'{export_path} exported successfully.')
 
-
 generate_line_drawing(length, width, center_hole_diameter, corner_radius, bolt_hole_diameter, export_path)
-
